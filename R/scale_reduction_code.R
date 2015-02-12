@@ -18,8 +18,6 @@
 
 ScaleReduce = function(full.scale, retest=FALSE, factors=2){
 
-  requireNamespace(psych, quietly = TRUE)
-  requireNamespace(psy, quietly = TRUE)
   ## determine length of full scale
   if(retest == TRUE){
     n = ncol(full.scale)/2
@@ -81,14 +79,14 @@ ScaleReduce = function(full.scale, retest=FALSE, factors=2){
   ## correlation with full scale
   data.matrix$correlations = NA
   for(i in 1:(m-1)){
-    data.matrix$correlations[i] = corr.test(as.matrix(abbreviated.scales[,i]), as.matrix(abbreviated.scales[,m]))$r
+    data.matrix$correlations[i] = psych::corr.test(as.matrix(abbreviated.scales[,i]), as.matrix(abbreviated.scales[,m]))$r
   }
 
   ## Cronbach's alpha coefficient
   data.matrix$alphas = NA
   for(i in (n+1):m){
     alpha.columns = c(as.matrix(combinations[i, !is.na(combinations[i,])]))
-    data.matrix$alphas[i] = cronbach(full.scale[, alpha.columns])$alpha
+    data.matrix$alphas[i] = psy::cronbach(full.scale[, alpha.columns])$alpha
   }
 
   ## principal factor analysis
