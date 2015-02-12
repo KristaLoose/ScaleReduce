@@ -1,8 +1,11 @@
 Package: ScaleReduce
-Title: What the Package Does (one line, title case)
+Title: Function to Analyze Survey Scales for Possible Reduction
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph)
+Authors@R: person("Krista", "Loose", , "loosek@mit.edu", role = c("aut", "cre"))
+Description: This function provides a series of statistics to determine minimum scale length with properties similar to a full scale.
+Imports:
+  psych,
+  psy
 Depends: R (>= 3.1.1)
 License: What license is it under?
 LazyData: true

@@ -4,11 +4,13 @@
 #' @param full.scale A dataset containing all items in the full scale, rescaled to range between 0 and 1; must not include NAs
 #' @param retest Indicator for whether the scale was administered twice; in this case, responses from both administrations should be included in full.scale; default is FALSE
 #' @param factors the number of factors you want to analyze in the principal components section; default is 2
-#' @return abbreviated.scales creates mean values of all subscales (including one-item scales and the full original scale)
-#' @return abbreviated.scales.retest if retest=TRUE, creates mean values of all subscales from second administration of the scale
-#' @return statistics provides information on each subscale, including which items the scale contains, its length, and all possible statistics calculated using this function (e.g., Cronbach's alpha cannot be calculated for the one-item scales, so these statistics are not provided here)
-#' @return item.analysis summarizes information on subscales of various length (see tables X and Y in Loose, et. al. (2015))
-#' @return question.analysis summarizes information on subscales containing each item from the original full scale (see tables X and Y in Loose, et. al. (2015))
+#' @return \strong{abbreviated.scales} creates mean values of all subscales (including one-item scales and the full original scale)
+#' @return \strong{abbreviated.scales.retest} if retest=TRUE, creates mean values of all subscales from second administration of the scale
+#' @return \strong{statistics} provides information on each subscale, including which items the scale contains, its length, and all possible statistics calculated using this function (e.g., Cronbach's alpha cannot be calculated for the one-item scales, so these statistics are not provided here)
+#' @return \strong{item.analysis} summarizes information on subscales of various length (see tables X and Y in Loose, et. al. (2015))
+#' @return \strong{question.analysis} summarizes information on subscales containing each item from the original full scale (see tables X and Y in Loose, et. al. (2015))
+#' @importFrom psy cronbach
+#' @importFrom psych corr.test
 #' @export
 #' @author Krista Loose \email{loosek@@mit.edu}
 #' @references Loose, Krista, Yue Hou, Adam Berinsky, and Cindy Kam.  2015.  "Strategies for Scale Reduction."  Working Paper.
@@ -16,6 +18,8 @@
 
 ScaleReduce = function(full.scale, retest=FALSE, factors=2){
 
+  requireNamespace(psych, quietly = TRUE)
+  requireNamespace(psy, quietly = TRUE)
   ## determine length of full scale
   if(retest == TRUE){
     n = ncol(full.scale)/2
