@@ -11,6 +11,7 @@
 #' @return \strong{question.analysis} summarizes information on subscales containing each item from the original full scale (see tables X and Y in Loose, et. al. (2015))
 #' @importFrom psy cronbach
 #' @importFrom psych corr.test
+#' @importFrom psych alpha
 #' @export
 #' @author Krista Loose \email{loosek@@mit.edu}
 #' @references Loose, Krista, Yue Hou, Adam Berinsky, and Cindy Kam.  2015.  "Strategies for Scale Reduction."  Working Paper.
@@ -161,7 +162,7 @@ ScaleReduce = function(full.scale, retest=FALSE, factors=2){
 
   for(i in (n+1):m){
   	total.columns = c(as.matrix(combinations[i, !is.na(combinations[i,])]))
-  	total.stats = alpha(full.scale[,total.columns])$item.stats
+  	total.stats = psych::alpha(full.scale[,total.columns])$item.stats
   	for(j in 1:length(total.columns)){
   		data.matrix[i,(total.columns[j]+old.cols)] = total.stats$r.drop[j]
   	}
