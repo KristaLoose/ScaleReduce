@@ -14,15 +14,15 @@ ScaleReduce(full.scale, retest = FALSE, factors = 2)
 \item{factors}{the number of factors you want to analyze in the principal components section; default is 2}
 }
 \value{
-abbreviated.scales creates mean values of all subscales (including one-item scales and the full original scale)
+\strong{abbreviated.scales} creates mean values of all subscales (including one-item scales and the full original scale)
 
-abbreviated.scales.retest if retest=TRUE, creates mean values of all subscales from second administration of the scale
+\strong{abbreviated.scales.retest} if retest=TRUE, creates mean values of all subscales from second administration of the scale
 
-statistics provides information on each subscale, including which items the scale contains, its length, and all possible statistics calculated using this function (e.g., Cronbach's alpha cannot be calculated for the one-item scales, so these statistics are not provided here)
+\strong{statistics} provides information on each subscale, including which items the scale contains, its length, and all possible statistics calculated using this function (e.g., Cronbach's alpha cannot be calculated for the one-item scales, so these statistics are not provided here)
 
-item.analysis summarizes information on subscales of various length (see tables X and Y in Loose, et. al. (2015))
+\strong{item.analysis} summarizes information on subscales of various length (see tables X and Y in Loose, et. al. (2015))
 
-question.analysis summarizes information on subscales containing each item from the original full scale (see tables X and Y in Loose, et. al. (2015))
+\strong{question.analysis} summarizes information on subscales containing each item from the original full scale (see tables X and Y in Loose, et. al. (2015))
 }
 \description{
 This function provides a series of statistics to determine minimum scale length with properties similar to a full scale.
